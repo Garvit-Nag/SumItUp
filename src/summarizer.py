@@ -10,10 +10,7 @@ class TextSummarizer:
         """
         try:
             @st.cache_resource
-            start_time = time.time()
             self.summarizer = pipeline("summarization", model=model_name)
-            end_time = time.time()
-            print(f"Model loaded in {end_time - start_time} seconds.")
         except Exception as e:
             raise RuntimeError(f"Failed to load summarization model: {e}")
     
