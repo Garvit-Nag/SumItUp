@@ -1,4 +1,5 @@
 from transformers import pipeline
+import time
 class TextSummarizer:
     def __init__(self, model_name="facebook/bart-large-cnn"):
         """
