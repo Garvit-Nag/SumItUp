@@ -1,6 +1,8 @@
 import streamlit as st
 from src.document_processor import process_document
 from src.summarizer import TextSummarizer
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 def main():
     st.set_page_config(
