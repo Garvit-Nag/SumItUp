@@ -8,6 +8,7 @@ class TextSummarizer:
             model_name (str): Hugging Face model for summarization
         """
         try:
+            @st.cache_resource
             self.summarizer = pipeline("summarization", model=model_name)
         except Exception as e:
             raise RuntimeError(f"Failed to load summarization model: {e}")
