@@ -7,7 +7,7 @@ import torch
 from transformers import pipeline
 
 class TextSummarizer:
-    def __init__(self, model_name="google/pegasus-xsum"):
+    def __init__(self, model_name="facebook/bart-large-cnn"):
         """
         Initialize summarization pipeline with robust error handling
         """
@@ -16,7 +16,6 @@ class TextSummarizer:
             self.summarizer = pipeline(
                 "summarization", 
                 model=model_name, 
-                use_auth_token=False, 
                 device=-1  # Force CPU usage
             )
         except Exception as e:
