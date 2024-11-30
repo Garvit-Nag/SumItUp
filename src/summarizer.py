@@ -1,6 +1,6 @@
 import os
 # Set environment variables before importing transformers
-os.environ['TRANSFORMERS_OFFLINE'] = '1'
+os.environ['TRANSFORMERS_OFFLINE'] = '0'
 os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
 
 import torch
