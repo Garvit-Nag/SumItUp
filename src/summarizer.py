@@ -1,36 +1,35 @@
+import os
+# Set environment variables before importing transformers
+os.environ['TRANSFORMERS_OFFLINE'] = '1'
+os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
+
+import torch
 from transformers import pipeline
+
 class TextSummarizer:
     def __init__(self, model_name="facebook/bart-large-cnn"):
         """
-        Initialize summarization pipeline
-        
-        Args:
-            model_name (str): Hugging Face model for summarization
+        Initialize summarization pipeline with robust error handling
         """
         try:
-            self.summarizer = pipeline("summarization", model=model_name)
+            # Explicitly use CPU
+            self.summarizer = pipeline(
+                "summarization", 
+                model=model_name, 
+                device=-1  # Force CPU usage
+            )
         except Exception as e:
+            print(f"Model Loading Error: {e}")
             raise RuntimeError(f"Failed to load summarization model: {e}")
     
-    def generate_summary(self, text, max_length=400, min_length=100):
-        """
-        Generate summary for given text
-        
-        Args:
-            text (str): Input text to summarize
-            max_length (int): Maximum length of summary
-            min_length (int): Minimum length of summary
-        
-        Returns:
-            str: Generated summary
-        """
+    def generate_summary(self, text, max_length=150, min_length=50):
         try:
-            # Validate input text
+            # More robust input validation
             if not text or len(text.strip()) == 0:
                 return "No text provided for summarization."
             
-            # Ensure min_length is less than max_length
-            min_length = min(min_length, max_length)
+            # Truncate very long texts to prevent memory issues
+            text = text[:1024]
             
             # Generate summary
             summary = self.summarizer(
@@ -43,4 +42,5 @@ class TextSummarizer:
             return summary
         
         except Exception as e:
+            print(f"Summarization Error: {e}")
             return f"Error during summarization: {e}"
