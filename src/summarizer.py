@@ -16,6 +16,7 @@ class TextSummarizer:
             self.summarizer = pipeline(
                 "summarization", 
                 model=model_name, 
+                use_auth_token=False, 
                 device=-1  # Force CPU usage
             )
         except Exception as e:
