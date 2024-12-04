@@ -1,25 +1,82 @@
-# News Summarizer
+# SumItUp - Intelligent Document Summarization Tool
 
-## Overview
-An intelligent document summarization tool using Hugging Face's BART model and Streamlit.
+## Project Overview
+SumItUp is a Streamlit-based web application that provides intelligent document summarization and sentiment analysis. Users can either paste text directly or upload documents (PDF, DOCX, TXT) to get concise summaries and understand the emotional tone of the content.
 
 ## Features
-- Direct text input summarization
-- Document upload support (txt, pdf, docx)
-- Configurable summary length
-- Uses state-of-the-art NLP model
+- Text input via direct paste or file upload
+- Supports multiple file formats: TXT, PDF, DOCX
+- Customizable summary length
+- Sentiment analysis with polarity and subjectivity scores
+- User-friendly Streamlit interface
 
-## Installation
-1. Clone the repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the app: `streamlit run app.py`
+## Prerequisites
+- Python 3.12
+- pip
+- Virtual environment support
 
-## Dependencies
+## Installation Steps
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/sumitup.git
+cd sumitup
+```
+
+### 2. Create Virtual Environment
+```bash
+python -m venv venv
+```
+
+### 3. Activate Virtual Environment
+- On Windows:
+  ```bash
+  .\venv\Scripts\Activate
+  ```
+- On macOS/Linux:
+  ```bash
+  source venv/bin/activate
+  ```
+
+### 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+## Running the Application
+```bash
+streamlit run app.py
+```
+
+## Project Structure
+```
+sumitup/
+│
+├── app.py                  # Main Streamlit application
+│
+├── src/
+│   ├── __init__.py         # Package initializer
+│   ├── document_processor.py  # Document text extraction logic
+│   └── summarizer.py       # Text summarization and sentiment analysis
+│
+├── requirements.txt        # Project dependencies
+└── README.md               # Project documentation
+```
+
+## Technologies Used
 - Streamlit
-- Transformers
-- PyTorch
+- Transformers (Hugging Face)
+- TextBlob
 - PyPDF2
 - python-docx
 
-## Model
-Uses Facebook's BART Large CNN model for summarization
+## Troubleshooting
+- Ensure all dependencies are installed
+- Check Python version compatibility
+- Verify file permissions
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+[Add your license information here]
