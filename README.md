@@ -78,5 +78,4 @@ sumitup/
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-## License
-[Add your license information here]
+
