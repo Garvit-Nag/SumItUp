@@ -1,4 +1,5 @@
 # News Summarizer
+https://huggingface.co/spaces/garvitcpp/Sum-it-up
 
 ## Overview
 An intelligent document summarization tool using Hugging Face's BART model and Streamlit.
